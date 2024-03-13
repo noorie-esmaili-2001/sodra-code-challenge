@@ -17,3 +17,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.register('runWithJavaExec', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = "se.sodra.Main"
+}
