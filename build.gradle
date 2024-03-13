@@ -18,6 +18,10 @@ test {
     useJUnitPlatform()
 }
 
+tasks.withType(JavaExec).configureEach {
+    systemProperty("file.encoding", "ISO-8859-1")
+}
+
 tasks.register('runWithJavaExec', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = "se.sodra.Main"
