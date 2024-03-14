@@ -11,7 +11,12 @@ public class Main {
      * @param text Textsträngen att kontrollera.
      * @return True om texten har endast unika tecken, annars false.
      */
-    private static boolean hasUniqueChars(String text) {
+    protected static boolean hasUniqueChars(String text) {
+
+        if (text.trim().isEmpty()) {
+            throw new IllegalArgumentException("Text cannot be empty!");
+        }
+
         HashSet<Character> set = new HashSet<>();
 
         for (char c : text.toCharArray()) {
