@@ -61,4 +61,16 @@ public class MainTest {
         String text = "112345";
         assertFalse(Main.hasUniqueChars(text));
     }
+
+    @Test
+    public void testHasUniqueChars_SwedishAlphabets() {
+        String text = "öäå";
+        assertTrue(Main.hasUniqueChars(text));
+    }
+    @Test
+    public void testHasUniqueChars_SwedishAlphabetsDuplicate() {
+        String text = "Många Å";
+        assertFalse(Main.hasUniqueChars(text));
+    }
+
 }

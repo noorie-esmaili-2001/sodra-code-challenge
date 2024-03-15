@@ -1,5 +1,7 @@
 package se.sodra;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
 
 public class Main {
@@ -17,9 +19,20 @@ public class Main {
             throw new IllegalArgumentException("Text cannot be empty!");
         }
 
+        String text1 = text.replaceAll("Å", "å");
+        String text2 = text1.replaceAll("Ä", "ä");
+        String text3 = text2.replaceAll("Ö", "ö");
+
         HashSet<Character> set = new HashSet<>();
 
-        for (char c : text.toCharArray()) {
+        String encodedString = null;
+        try {
+            encodedString = new String(text3.getBytes("ISO-8859-15"), StandardCharsets.UTF_8);
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (char c : encodedString.toCharArray()) {
             if (c != ' ') {
                 if (set.contains(Character.toLowerCase(c))) {
                     return false;
